@@ -38,9 +38,8 @@ cp $SRC_PATH/vimrc ~/.vimrc
  
 # Move colors into place 
 cp ~/.vim/plugged/gruvbox/colors/gruvbox.vim ~/.vim/colors/gruvbox.vim
- 
-# Install COC Language servers 
-vim -c ":CocInstall coc-tabnine coc-tsserver coc-sh coc-markdownlint coc-jedi coc-json coc-rls coc-solargraph" 
 
-# FIXME: This isn't a great exit. I can't add the `-c ":q"` here without 
-# nooping the language server installation. 
+# Install language servers
+vi -c "CocInstall -sync  coc-tabnine coc-tsserver coc-sh coc-markdownlint coc-jedi coc-json coc-rls coc-solargraph" -c ":q" -c ":q"
+ 
+echo "Successfully installed vimconfigs!"
