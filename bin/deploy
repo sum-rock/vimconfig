@@ -1,0 +1,5 @@
+#!/bin/bash
+
+SCRIPT_DIR=$(cd "$(dirname "${BASH_SOURCE[0]")" &> /dev/null && pwd)
+rsync -a --delete $SCRIPT_DIR/../conf/.vim /home/$USER/
+rsync -a $SCRIPT_DIR/../conf/.vimrc /home/$USER/
