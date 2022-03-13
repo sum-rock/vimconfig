@@ -1,0 +1,52 @@
+#!/bin/bash
+
+# Confirmation 
+read -r -p "Are you sure you want to remove all vim customizations? [y/N] " response
+response=${response,,}  # to lowercase
+if [[ ! "$response" =~ ^(yes|y)$ ]]; then
+    echo "canceling uninstall..."
+    exit 1
+fi
+ 
+# Delete all relevant directories and files 
+if [ -d ~/.vim ]; then
+    sudo rm -R ~/.vim
+fi
+if [ -f ~/.vimrc ]; then
+    sudo rm ~/.vimrc
+fi
+if [ -d ~/.config/coc ]; then
+    sudo rm -R ~/.config/coc
+fi
+if [ -d ~/.config/TabNine ]; then
+    sudo rm -R ~/.config/TabNine
+fi 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
