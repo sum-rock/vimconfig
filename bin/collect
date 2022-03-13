@@ -1,7 +1,0 @@
-#!/bin/bash
-
-VIMCONFIG_PATH=$(cd "$(dirname "${BASH_SOURCE[0]}")" &> /dev/null && pwd)/..
-HOME_PATH=/home/$USER
-
-rsync -a --delete --exclude $HOME_PATH/.vim/plugged $HOME_PATH/.vim $VIMCONFIG_PATH/conf/
-rsync -a $HOME_PATH/.vimrc $VIMCONFIG_PATH/conf/
