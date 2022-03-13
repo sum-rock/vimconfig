@@ -12,9 +12,9 @@ clear_dirs() {
     if [ -d ~/.config/coc ]; then
         sudo rm -R ~/.config/coc
     fi
-    if [ -d ~/.config/TabNine ]; then
-        sudo rm -R ~/.config/TabNine
-    fi 
+    # Note that we do not remove TabNine on install. When TabNine is run 
+    # for the first time, there is a really annoying browser event that 
+    # can be avoided by leaving this alone
 }
 create_dirs() {
     mkdir -p ~/.vim/colors
@@ -41,4 +41,6 @@ cp ~/.vim/plugged/gruvbox/colors/gruvbox.vim ~/.vim/colors/gruvbox.vim
  
 # Install COC Language servers 
 vim -c ":CocInstall coc-tabnine coc-tsserver coc-sh coc-markdownlint coc-jedi coc-json coc-rls coc-solargraph" 
- 
+
+# FIXME: This isn't a great exit. I can't add the `-c ":q"` here without 
+# nooping the language server installation. 
