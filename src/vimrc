@@ -1,8 +1,10 @@
 syntax on
 colorscheme gruvbox
+set number
 set ruler
 set showcmd
 set incsearch
+set nowrap 
 
 set tabstop=4
 set softtabstop=0
