@@ -1,5 +1,23 @@
 #!/bin/bash
 
-SCRIPT_DIR=$(cd "$(dirname "${BASH_SOURCE[0]")" &> /dev/null && pwd)
-rsync -a --delete $SCRIPT_DIR/../conf/.vim /home/$USER/
-rsync -a $SCRIPT_DIR/../conf/.vimrc /home/$USER/
+VIMCONFIG_PATH=$(cd "$(dirname "${BASH_SOURCE[0]}")" &> /dev/null && pwd)/../conf
+HOME_PATH=/home/$USER
+
+if [ ! -d "$HOME_PATH/.vim" ]; then 
+	mkdir $HOME_PATH/.vim 
+fi
+if [ -d "$HOME_PATH/.config/coc" ]; then
+    rm -R $HOME_PATH/.config/coc/*
+else
+    mkdir $HOME_PATH/.config/coc
+fi
+
+
+rsync -a --delete $VIMCONFIG_PATH/.vim/ $HOME_PATH/.vim/
+rsync $VIMCONFIG_PATH/.vimrc $HOME_PATH/
+
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
+vim -c ":PlugInstall" -c ":q" -c ":q" 
+vim -c ":CocInstall coc-tabnine coc-tsserver coc-sh coc-markdownlint coc-jedi coc-json coc-rls coc-solargraph" 
