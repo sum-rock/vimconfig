@@ -1,23 +1,44 @@
 #!/bin/bash
 
-VIMCONFIG_PATH=$(cd "$(dirname "${BASH_SOURCE[0]}")" &> /dev/null && pwd)/../conf
-HOME_PATH=/home/$USER
+SRC_PATH=$(cd "$(dirname "${BASH_SOURCE[0]}")" &> /dev/null && pwd)/../src
 
-if [ ! -d "$HOME_PATH/.vim" ]; then 
-	mkdir $HOME_PATH/.vim 
-fi
-if [ -d "$HOME_PATH/.config/coc" ]; then
-    rm -R $HOME_PATH/.config/coc/*
-else
-    mkdir $HOME_PATH/.config/coc
-fi
+clear_dirs() {
+    if [ -d ~/.vim ]; then
+        sudo rm -R ~/.vim
+    fi
+    if [ -f ~/.vimrc ]; then
+        sudo rm ~/.vimrc
+    fi
+    if [ -d ~/.config/coc ]; then
+        sudo rm -R ~/.config/coc
+    fi
+    if [ -d ~/.config/TabNine ]; then
+        sudo rm -R ~/.config/TabNine
+    fi 
+}
+create_dirs() {
+    mkdir -p ~/.vim/colors
+    mkdir ~/.config/coc
+}
 
+clear_dirs
+create_dirs
 
-rsync -a --delete $VIMCONFIG_PATH/.vim/ $HOME_PATH/.vim/
-rsync $VIMCONFIG_PATH/.vimrc $HOME_PATH/
-
+# Get assets for VimPlug plugin manager
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
+# Use temp vimrc to install pluggins
+cp $SRC_PATH/vimrc.tmp ~/.vimrc
 vim -c ":PlugInstall" -c ":q" -c ":q" 
+ 
+# Replace temp vimrc with real one 
+rm ~/.vimrc
+cp $SRC_PATH/vimrc ~/.vimrc
+ 
+# Move colors into place 
+cp ~/.vim/plugged/gruvbox/colors/gruvbox.vim ~/.vim/colors/gruvbox.vim
+ 
+# Install COC Language servers 
 vim -c ":CocInstall coc-tabnine coc-tsserver coc-sh coc-markdownlint coc-jedi coc-json coc-rls coc-solargraph" 
+ 
