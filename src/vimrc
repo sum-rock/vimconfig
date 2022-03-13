@@ -1,5 +1,4 @@
 syntax on
-colorscheme gruvbox
 set number
 set ruler
 set showcmd
@@ -18,6 +17,10 @@ set nobackup
 set nowritebackup
 set cmdheight=2
 
+" Color scheme settings
+colorscheme gruvbox
+:set bg=dark
+ 
 " COC GoTo code navigation
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
