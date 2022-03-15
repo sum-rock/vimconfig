@@ -21,12 +21,6 @@ set cmdheight=2
 colorscheme gruvbox
 :set bg=dark
  
-" COC GoTo code navigation
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
-
 " Key remaps
 nnoremap o o <esc>
 nnoremap O O <esc>
