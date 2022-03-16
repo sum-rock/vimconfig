@@ -1,9 +1,11 @@
 " The vimrc.plugins config file contains a list of vim plugins
+ 
 call plug#begin('~/.vim/plugged')
     
     Plug 'morhetz/gruvbox'
+    Plug 'preservim/nerdtree' 
     Plug 'vim-airline/vim-airline'
     Plug 'vim-airline/vim-airline-themes'
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
-    
+     
 call plug#end()
