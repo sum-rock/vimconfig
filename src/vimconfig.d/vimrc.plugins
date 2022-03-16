@@ -1,6 +1,3 @@
-" This is a temporary .vimrc file to install plugins before setting variables 
-" that rely on these plugins
-
 call plug#begin('~/.vim/plugged')
     
     Plug 'morhetz/gruvbox'

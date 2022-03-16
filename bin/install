@@ -29,12 +29,13 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 # Use temp vimrc to install pluggins
-cp $SRC_PATH/vimrc.tmp ~/.vimrc
+cp $SRC_PATH/vimconfig.d/vimrc.plugins ~/.vimrc
 vim -c ":PlugInstall" -c ":q" -c ":q" 
  
 # Replace temp vimrc with real one 
 rm ~/.vimrc
 cp $SRC_PATH/vimrc ~/.vimrc
+cp -r $SRC_PATH/vimconfig.d ~/.vim/vimconfig.d 
  
 # Move colors into place 
 cp ~/.vim/plugged/gruvbox/colors/gruvbox.vim ~/.vim/colors/gruvbox.vim
