@@ -1,3 +1,7 @@
+" The vimrc.general config file is reserved for settings that are not 
+" related to any plugin. Do not put plugin specific settings in this 
+" file
+ 
 syntax on
 set number
 set ruler

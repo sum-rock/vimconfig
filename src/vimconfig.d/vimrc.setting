@@ -1,5 +1,9 @@
+" The vimrc.setting config file is reserved for plugin specific settings. Only 
+" those settings that related to plugins should be written here.
+" Gruvbox settings 
 colorscheme gruvbox
 :set bg=dark
 
+" Airliner settings
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_theme='gruvbox'
